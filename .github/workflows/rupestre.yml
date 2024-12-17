@@ -1,0 +1,36 @@
+name: rupestre
+
+# Eventos que disparan el workflow
+on: 
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+# Trabajos a ejecutar
+jobs:
+  build:
+    # Selecciona el sistema operativo
+    runs-on: ubuntu-latest
+
+    # Pasos del workflow
+    steps:
+    # Descarga el código del repositorio
+    - uses: actions/checkout@v3
+
+    # Configura el lenguaje (ejemplo con Python)
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.x'
+
+    # Instala dependencias
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    # Ejecuta pruebas o comandos
+    - name: Run tests
+      run: |
+        python -m pytest
