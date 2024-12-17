@@ -10,17 +10,17 @@ on:
 # Trabajos a ejecutar
 jobs:
   build:
-    # Selecciona el sistema operativo
+    # Actualiza a ubuntu-24.04 o mantén compatibilidad
     runs-on: ubuntu-latest
 
     # Pasos del workflow
     steps:
     # Descarga el código del repositorio
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4  # Asegúrate de usar la última versión
 
     # Configura el lenguaje (ejemplo con Python)
     - name: Set up Python
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v5  # Actualiza a la última versión
       with:
         python-version: '3.x'
 
